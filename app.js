@@ -3,8 +3,6 @@ const ITEMS_PER_PAGE = 10;
 
 let todos = [];
 let currentPage = 1;
-
-// Fetch todos from API
 async function fetchTodos() {
   try {
     const res = await fetch(API_URL);
@@ -20,8 +18,6 @@ async function fetchTodos() {
     showError(error.message);
   }
 }
-
-// Render todos to the UI
 function renderTodos() {
   const list = document.getElementById("todoList");
   list.innerHTML = "";
@@ -42,13 +38,11 @@ function renderTodos() {
   });
 }
 
-// Paginate todos
 function paginate(items, page, perPage) {
   const start = (page - 1) * perPage;
   return items.slice(start, start + perPage);
 }
 
-// Render pagination
 function renderPagination() {
   const filtered = filterTodos(todos);
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
@@ -68,8 +62,6 @@ function renderPagination() {
     pagination.appendChild(li);
   }
 }
-
-// Filter by search and date
 function filterTodos(data) {
   const search = document.getElementById("searchInput").value.toLowerCase();
   const from = document.getElementById("fromDate").value;
@@ -83,8 +75,6 @@ function filterTodos(data) {
     return matchesSearch && afterFrom && beforeTo;
   });
 }
-
-// Add new todo
 async function addTodo() {
   const input = document.getElementById("newTodo");
   const title = input.value.trim();
@@ -109,16 +99,12 @@ async function addTodo() {
     showError(error.message);
   }
 }
-
-// Show error
 function showError(message) {
   const errBox = document.getElementById("errorMsg");
   errBox.classList.remove("d-none");
   errBox.innerText = message;
   setTimeout(() => errBox.classList.add("d-none"), 3000);
 }
-
-// Event Listeners
 document.getElementById("addBtn").addEventListener("click", addTodo);
 document.getElementById("filterBtn").addEventListener("click", () => {
   currentPage = 1;
@@ -130,6 +116,4 @@ document.getElementById("searchInput").addEventListener("input", () => {
   renderTodos();
   renderPagination();
 });
-
-// Init
 fetchTodos();

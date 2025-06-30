@@ -1,6 +1,6 @@
 # My Web Project
 
-A simple HTML/CSS project viewed with Live Server.
+A simple Todo App.
 
 ## 🚀 How to Run
 
