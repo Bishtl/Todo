@@ -10,7 +10,7 @@ A simple HTML/CSS project viewed with Live Server.
 
 ## 🖼️ Output Screenshot
 
-![Output Screenshot](output.png)
+![Output Screenshot](output.PNG)
 
 ## 📁 Files
 
